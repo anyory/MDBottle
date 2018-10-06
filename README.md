@@ -1,7 +1,7 @@
 # Material Bottle 
 ![主页](https://i.loli.net/2018/10/06/5bb8c8ba220ca.png)
 ## 什么是 Material Bottle？
-Material Bottle 是 OBottle 的质感设计分支，OBottle 是一款极简轻量级的博客程序，采用 PHP 编写。而本项目，则是在原有的功能基础上，加入了 [Material Design](https://material.io) 的设计元素，运用的库框架为 [MDUI](https://github.com/zdhxiong/mdui)。
+Material Bottle 是 [OBottle](https://github.com/SomeBottle/OBottle) 的质感设计分支，OBottle 是一款极简轻量级的博客程序，采用 PHP 编写。而本项目，则是在原有的功能基础上，加入了 [Material Design](https://material.io) 的设计元素，运用的库框架为 [MDUI](https://github.com/zdhxiong/mdui)。
 ## 如何使用 Material Bottle？
 ![编写](https://i.loli.net/2018/10/06/5bb8c8b9499b2.png)
 使用 Material Bottle 的方式很简单，仅需将 Github 上的内容全部打包解压到网站的根目录，访问 `/admin/` 目录进行设置后，即可开始发布您的文章。
