@@ -110,12 +110,20 @@ function drawer_position_body()
     if ($blog['drawer_enabled']=='true'){
         if ($blog['drawer_position']=='right'){
             if ($blog['drawer_show']=='open'){
-                return 'mdui-container mdui-drawer-body-right';
+                if ($blog['drawer_open']=='overlay'){
+                    return 'mdui-container';
+                } else {
+                    return 'mdui-container mdui-drawer-body-right';
+                };
             }
             return 'mdui-container';
         } else if ($blog['drawer_position']=='left'){
             if ($blog['drawer_show']=='open'){
-                return 'mdui-container mdui-drawer-body-left';
+                if ($blog['drawer_open']=='overlay'){
+                    return 'mdui-container';
+                } else {
+                    return 'mdui-container mdui-drawer-body-left';
+                };
             } else {
                 return 'mdui-container';
             };
@@ -131,14 +139,33 @@ function drawer_showing()
     global $blog;
     if ($blog['drawer_enabled']=='true'){
         if ($blog['drawer_show']=='open'){
-            return 'mdui-shadow-2';
+            if ($blog['drawer_open']=='overlay'){
+                return 'mdui-shadow-2 mdui-drawer-close';
+            } else {
+                return 'mdui-shadow-2';
+            };
         } else if ($blog['drawer_show']=='close'){
             return 'mdui-shadow-2 mdui-drawer-close';
         } else {
-            return 'mdui-shadow-2';
+            if ($blog['drawer_open']=='overlay'){
+                return 'mdui-shadow-2 mdui-drawer-close';
+            } else {
+                return 'mdui-shadow-2';
+            };
         };
     } else {
         return 'mdui-shadow-2';
+    };
+}
+function drawer_open()
+{
+    global $blog;
+    if ($blog['drawer_open']=='default'){
+        return 'overlay: false';
+    } else if ($blog['drawer_open']=='overlay'){
+        return 'overlay: true';
+    } else {
+        return 'overlay: false';
     };
 }
 function drawer_title()
@@ -153,6 +180,33 @@ function drawer_target()
         return '#menu';
     } else {
         return 'null';
+    };
+}
+function toolbar_show()
+{
+    global $blog;
+    if ($blog['toolbar_enabled']=='true'){
+        return 'unset;';
+    } else {
+        return 'none;';
+    };
+}
+function toolbar_tips()
+{
+    global $blog;
+    if ($blog['toolbar_tip_enabled']=='true'){
+        return 'mdui-tooltip';
+    } else {
+        return 'null';
+    };
+}
+function toolbar_manage()
+{
+    global $blog;
+    if ($blog['toolbar_manager_quick_enter_enabled']=='true'){
+        return 'unset;';
+    } else {
+        return 'none;';
     };
 }
 function changed()
