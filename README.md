@@ -5,8 +5,12 @@ Material Bottle 是 OBottle 的质感设计分支，OBottle 是一款极简轻�
 ## 如何使用 Material Bottle？
 ![编写](https://i.loli.net/2018/10/06/5bb8c8b9499b2.png)
 使用 Material Bottle 的方式很简单，仅需将 Github 上的内容全部打包解压到网站的根目录，访问 `/admin/` 目录进行设置后，即可开始发布您的文章。
-如果需要对网站进行更加详细的配置，请编辑 `/admin/conf.php` 并保存，您的修改将会即时生效。`conf.php` 会在以后的版本不断更新以添加更多功能。
+
 需要注意的是，Material Bottle **并不使用数据库存储数据**，而是将数据以 PHP 文件的形式存储在 `/p/` 目录。也正因此，您在备份的时候仅需备份 `/p/` 目录即可。
+## 自定义 Material Bottle 的使用。
+如果需要对网站进行更加详细的配置，请编辑 `/admin/conf.php` 并保存，您的修改将会即时生效。`conf.php` 会在以后的版本不断更新以添加更多功能。
+
+`conf.php` 的更新往往搭配着 `/c/f.php` 以及其影响页面的文件更新，因此在更新 `conf.php` 时，需要在受影响的文件内以及函数库 `/c/f.php` 内添加支持。
 ## Material Bottle 的优势
 **更加轻量**。这要归功于 OBottle 的开发宗旨。它并不需要数据库，也不需要繁杂的安装程序，仅需创建一个管理员账户，即可开始自己的创作。
 
