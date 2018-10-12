@@ -104,20 +104,7 @@ session_write_close();
 <script>var editnum<?php if(is_numeric($edit)){echo '='.$edit;}?>;</script>
 <body style="background-color: <?php echo admin_color();?>">
 	<button style="position: absolute; right: 20px;" mdui-tooltip="{content: '帮助'}" mdui-dialog="{target: '#help'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">help_outline</i></button>
-	<div class="mdui-container mdui-typo mdui-shadow-2 mdui-hoverable mdui-color-white mdui-img-rounded" style="margin-top: 5%; margin-bottom: 5%;">
-		<div style="padding: 4%;">
-			<h2 style="display: inline;"><b><?php if(!is_numeric($edit)){echo "撰写";} else {echo "编辑";};?></b></h2>
-			<div style="float: right;">
-				<?php if(is_numeric($edit)){?>
-					<button mdui-tooltip="{content: '查看页面'}" onclick="window.location.href='./../#!<?php echo $edit;?>'" target="_self" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2"><i class="mdui-icon material-icons">find_in_page</i></button>&emsp;<button mdui-tooltip="{content: '新建'}" onclick="window.location.href='edit.php'" target="_self" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2"><i class="mdui-icon material-icons">description</i></button>&emsp;<button mdui-tooltip="{content: '删除'}" class="mdui-btn mdui-btn-icon mdui-shadow-2 mdui-ripple" onclick="window.location.href='edit.php?=<?php echo $edit;?>&t=del'" target="_self" style="color: #AAA"><i class="mdui-icon material-icons" style="color: black;">delete</i></button>&emsp;
-				<?php }; ?>
-				<button id="lefile" mdui-tooltip="{content: '上传图片'}" onclick="$('input[id=smfile]').click();" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">image</i></button>&emsp;
-				<button id="bold" mdui-tooltip="{content: '粗体'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '**粗体文字**';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">format_bold</i></button>&emsp;
-				<button id="em" mdui-tooltip="{content: '斜体'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '*斜体文字*';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">format_italic</i></button>&emsp;
-				<button id="home" mdui-tooltip="{content: '主页'}" onclick="window.location.href='./../#m'" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2 mdui-btn-icon"><i class="mdui-icon material-icons">home</i></button>
-				</div>
-			<br><br><div class="mdui-divider"></div>
-			<div id="help" class="mdui-dialog">
+	<div id="help" class="mdui-dialog">
 				<div class="mdui-dialog-title"><i class="mdui-icon material-icons">help_outline</i> 帮助</div>
 				<div class="mdui-dialog-content">
 					<p>这里只简要说明了撰写与编辑页面的作用，详细的请查看 Material Bottle 的 Github Wiki。</p>
@@ -153,7 +140,7 @@ session_write_close();
 								</tr>
 								<tr>
 									<td>≥6</td>
-									<td><del>无操作</del><b>有惊喜！</b></td>
+									<td>无操作</td>
 								</tr>
 							</tbody>
 						</table>
@@ -165,6 +152,39 @@ session_write_close();
 					<button class="mdui-btn mdui-ripple mdui-ripple-blue" mdui-dialog-confirm><span style="color: #2196F3">OK</button>
 				</div>
 			</div>
+	<div class="mdui-container mdui-typo mdui-shadow-2 mdui-hoverable mdui-color-white mdui-img-rounded" style="margin-top: 3%; margin-bottom: 3%;">
+		<div style="padding: 4%;">
+			<h2 style="display: inline;"><strong><?php if(!is_numeric($edit)){echo "撰写";} else {echo "编辑";};?></strong></h2>
+			<div style="float: right;">
+				<?php if(is_numeric($edit)){?>
+					<button mdui-tooltip="{content: '查看页面'}" onclick="window.location.href='./../#!<?php echo $edit;?>'" target="_self" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2"><i class="mdui-icon material-icons">find_in_page</i></button>&emsp;<button mdui-tooltip="{content: '新建'}" onclick="window.location.href='edit.php'" target="_self" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2"><i class="mdui-icon material-icons">description</i></button>&emsp;<button mdui-tooltip="{content: '删除'}" class="mdui-btn mdui-btn-icon mdui-shadow-2 mdui-ripple" onclick="window.location.href='edit.php?=<?php echo $edit;?>&t=del'" target="_self" style="color: #AAA"><i class="mdui-icon material-icons" style="color: black;">delete</i></button>&emsp;
+				<?php }; ?>
+				<?php if(!is_numeric($edit)){?>
+					<button mdui-tooltip="{content: '编辑页面'}" mdui-dialog="{target: '#editinput'}" class="mdui-btn mdui-btn-icon mdui-shadow-2 mdui-ripple"><i class="mdui-icon material-icons">edit</i></button>&emsp;
+				<?php }; ?>
+				<div class="mdui-dialog" id="editinput">
+					<div class="mdui-dialog-title"><i class="mdui-icon material-icons">edit</i>&emsp;编辑页面</div>
+					<div class="mdui-dialog-content">
+						<form>
+							<div class="mdui-textfield mdui-textfield-floating-label">
+								<label class="mdui-textfield-label">输入页面 ID 以跳转</label>
+								<input id="idvalue" name="idvalue" class="mdui-textfield-input" type="text">
+							</div>
+						</form>
+					</div>
+					<div class="mdui-dialog-actions">
+						<button class="mdui-btn mdui-color-white mdui-ripple mdui-ripple-blue"><span style="color: #2196f3">CLOSE</span></button>
+						<button class="mdui-btn mdui-color-blue-accent mdui-ripple mdui-ripple-white mdui-hoverable mdui-shadow-2" onclick="javascript:window.location.href='./edit.php?e=' + document.getElementById('idvalue').value">GO</button>
+					</div>
+				</div>
+				<button id="lefile" mdui-tooltip="{content: '上传图片'}" onclick="$('input[id=smfile]').click();" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">image</i></button>&emsp;
+				<button id="bold" mdui-tooltip="{content: '粗体'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '**粗体文字**';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">format_bold</i></button>&emsp;
+				<button id="em" mdui-tooltip="{content: '斜体'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '*斜体文字*';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">format_italic</i></button>&emsp;
+				<button id="strike" mdui-tooltip="{content: '删除线'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '~~删除文字~~';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">strikethrough_s</i></button>&emsp;
+				<button id="quote" mdui-tooltip="{content: '引用'}" onclick="document.getElementById('c').value = document.getElementById('c').value + '\n\n> 引用文字';" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">format_quote</i></button>&emsp;
+				<button id="home" mdui-tooltip="{content: '主页'}" onclick="window.location.href='./../#m'" class="mdui-btn mdui-btn-icon mdui-ripple mdui-shadow-2 mdui-btn-icon"><i class="mdui-icon material-icons">home</i></button>
+				</div>
+			<br><br><div class="mdui-divider"></div>
 			<div class="<?php if(!is_numeric($edit)){ echo "mdui-textfield mdui-textfield-floating-label"; } else { echo "mdui-textfield"; }; ?>">
 				<label class="mdui-textfield-label">标题</label>
 				<input class="mdui-textfield-input" type='text' class='tagi input' name='t' id='t' value='<?php echo $ptitle;?>' required>
@@ -184,7 +204,7 @@ session_write_close();
 			<button href="javascript:;" onclick="edit()" class="mdui-btn mdui-color-blue-600 mdui-ripple mdui-shadow-2 mdui-hoverable" id='btn'>(O_o)?</button>
 			&emsp;<label class="mdui-checkbox"><input type="checkbox" id='zd' <?php if(checkc()){echo 'checked="true"';}?>/><i class="mdui-checkbox-icon"></i>置顶</label>
 			<form action="https://sm.ms/api/upload" id="fileinfo" method="post" enctype="multipart/form-data" style='display:none;'>
-				<input type="file" name="smfile" id="smfile" style="display: none;">
+				<input type="file" name="smfile" id="smfile" style="display: none;" accept="image/*">
 				<input type="hidden" name="ssl" value="true">
 				<input type="hidden" name="format" value="json">
 			</form>
