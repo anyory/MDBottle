@@ -98,7 +98,7 @@ session_write_close();
     		e.preventDefault()
 		}
 		</script>
-	  <title><?php if(!is_numeric($edit)){echo "撰写";} else {echo "编辑";};?></title>
+	  	<title><?php if(!is_numeric($edit)){echo "撰写";} else {echo "编辑";};?></title>
 	</head>
 </html>
 <script>var editnum<?php if(is_numeric($edit)){echo '='.$edit;}?>;</script>
@@ -140,7 +140,7 @@ session_write_close();
 								</tr>
 								<tr>
 									<td>≥6</td>
-									<td>无操作</td>
+									<td>无操作</td
 								</tr>
 							</tbody>
 						</table>
@@ -168,13 +168,13 @@ session_write_close();
 						<form>
 							<div class="mdui-textfield mdui-textfield-floating-label">
 								<label class="mdui-textfield-label">输入页面 ID 以跳转</label>
-								<input id="idvalue" name="idvalue" class="mdui-textfield-input" type="text">
+								<input id="idvalue" name="idvalue" class="mdui-textfield-input" type="text" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}">
 							</div>
 						</form>
 					</div>
 					<div class="mdui-dialog-actions">
-						<button class="mdui-btn mdui-color-white mdui-ripple mdui-ripple-blue"><span style="color: #2196f3">CLOSE</span></button>
-						<button class="mdui-btn mdui-color-blue-accent mdui-ripple mdui-ripple-white mdui-hoverable mdui-shadow-2" onclick="javascript:window.location.href='./edit.php?e=' + document.getElementById('idvalue').value">GO</button>
+						<button class="mdui-btn mdui-color-white mdui-ripple mdui-ripple-blue"><span style="color: #2196f3" mdui-dialog-close>CLOSE</span></button>
+						<button class="mdui-btn mdui-color-blue-accent mdui-ripple mdui-ripple-white mdui-hoverable mdui-shadow-2" onclick="javascript:window.location.href='./edit.php?e=' + document.getElementById('idvalue').value;">GO</button>
 					</div>
 				</div>
 				<button id="lefile" mdui-tooltip="{content: '上传图片'}" onclick="$('input[id=smfile]').click();" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">image</i></button>&emsp;
