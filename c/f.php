@@ -209,6 +209,15 @@ function toolbar_manage()
         return 'none;';
     };
 }
+function menu_display()
+{
+    global $blog;
+    if ($blog['drawer_enabled']=='true'){
+        return 'unset;';
+    } else {
+        return 'none;';
+    };
+}
 function changed()
 {
     /*有编辑，变更时间戳*/
