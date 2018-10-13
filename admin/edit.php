@@ -73,7 +73,7 @@ if($act=='out'){
 		echo "<script>alert('你还没有任何文章Orz');window.open('edit.php','_self');</script>";
 	}
 	}else{
-		echo "<script>if(confirm('真的要删除这篇文章吗=w=')){window.open('?e=".$edit."&t=del&c=yes','_self');}else{window.open('edit.php?e=".$edit."','_self');};</script>";
+		echo "<script>if(confirm('真的要删除这篇文章吗=w=')){window.open('?e=".$edit."&t=del&c=yes','_self');}else{history.back(-1);};</script>";
 	}
 	exit();
 }
@@ -162,7 +162,7 @@ session_write_close();
 				<?php if(!is_numeric($edit)){?>
 					<button mdui-tooltip="{content: '编辑页面'}" mdui-dialog="{target: '#editinput'}" class="mdui-btn mdui-btn-icon mdui-shadow-2 mdui-ripple"><i class="mdui-icon material-icons">edit</i></button>&emsp;
 				<?php }; ?>
-				<div class="mdui-dialog" id="editinput">
+				<div class="mdui-dialog mdui-locked" id="editinput">
 					<div class="mdui-dialog-title"><i class="mdui-icon material-icons">edit</i>&emsp;编辑页面</div>
 					<div class="mdui-dialog-content">
 						<form>
