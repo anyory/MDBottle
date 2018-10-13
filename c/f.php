@@ -218,6 +218,23 @@ function menu_display()
         return 'none;';
     };
 }
+function search_enabled()
+{
+    global $blog;
+    if ($blog['search_auto_enable']=='true'){
+        if ($blog['search_auto_enable_min_count'] >= 10){
+            return 'unset;';
+        } else {
+            return 'none;';
+        };
+    } else {
+        if ($blog['search_enabled']=='true'){
+            return 'unset;';
+        } else {
+            return 'none;';
+        };
+    };
+}
 function changed()
 {
     /*有编辑，变更时间戳*/
