@@ -52,4 +52,16 @@ $blog['toolbar_enabled']='true';
 $blog['toolbar_tip_enabled']='true';
 // 是否启用管理登录按钮。
 $blog['toolbar_manager_quick_enter_enabled']='true';
+// 是否启用搜索按钮。
+$blog['search_enabled']='true';
+// 是否自动启用搜索按钮
+///注意: 如果要让自动生效，
+///必须将 search_enabled 设置为 false 或非 true 其他值，否则可能不会自动而是永久启用。
+// 如果有好的想法或者遇到 Bug 请提交 Issue，万分感谢。
+// 设置此项后必须设置 search_auto_enable_min_count 项
+$blog['search_auto_enable']='false';
+// 设置至少有（大于等于）多少篇文章或者页面后，自动显示搜索按钮。
+// 此项仅在 search_auto_enable 为 true 时可用。
+$blog['search_auto_enable_min_count']=10;
+
 ?>
