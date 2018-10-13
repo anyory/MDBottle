@@ -80,7 +80,7 @@ if ($type == 'getpage') {
                             $k = file_get_contents('./../t/posts.html');
                             require './../p/' . $val . '.php';
                             $k = preg_replace("/\t|\[index\]/", '<b>></b>', $k);
-                            $k = preg_replace("/\t|\[title\]/", $ptitle, $k);
+                            $k = preg_replace("/\t|\[title\]/", $ptitle , $k);
                             $k = preg_replace("/\t|\[date\]/", '<div class="mdui-color-blue mdui-img-rounded mdui-shadow-2" style="display: inline-block;"><span style="color: white;">&nbsp;&nbsp;置顶&nbsp;&nbsp;</span></div>', $k);
                             $k = preg_replace("/\t|\[link\]/", '#!' . $val, $k);
                             $poststr = $poststr . $k;
@@ -156,7 +156,7 @@ if ($type == 'getpage') {
                             $ia = file_get_contents('./../t/tags.html');
                             $ia = preg_replace("/\t|\[index\]/", $ids . '.', $ia);
                             $ia = preg_replace("/\t|\[tag\]/", $k, $ia);
-                            $ia = preg_replace("/\t|\[num\]/", $t . '篇文章', $ia);
+                            $ia = preg_replace("/\t|\[num\]/", $t . ' 篇文章', $ia);
                             $ia = preg_replace("/\t|\[link\]/", '#tag/' . $k, $ia);
                             $str = $str . $ia;
                             $ids+= 1;
@@ -192,7 +192,7 @@ if ($type == 'getpage') {
                             $poststr = '<center><h4 style=\'color:#AAA;\'>箱子里翻不出来这个标签诶</h4></center>';
                         }
                         $c = preg_replace("/\t|\[tags\]/", $poststr, $c); /*替换标签页面html*/
-                        $c = preg_replace("/\t|\标签页/", '标签：' . $rt, $c); /*替换标签头html*/
+                        $c = preg_replace("/\t|\标签页/", '<h1 style="display: inline"><b>TAG: ' . $rt . '</b></h1>&emsp;<em style="color: grey">显示位于此标签下的文章或页面</em>', $c); /*替换标签头html*/
                     }
                 } else {
                     $result['result'] = 'notok';
@@ -235,7 +235,7 @@ if ($type == 'getpage') {
                     $html = Markdown(htmlspecialchars_decode($pcontent));
                     $c = preg_replace("/\t|\[content\]/", $html, $c);
                     $tagh = explode(',', $tag);
-                    $taghs = '<div class=\'tagdiv\'><img src=\'./img/tag.png\' style=\'width:16px;\'>';
+                    $taghs = '<svg mdui-tooltip="{content: \'TAG\'}" style="padding-top: 5px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12.876 2h-8.876v9.015l10.972 11.124 9.028-9.028-11.124-11.111zm-3.139 5.737c-.684.684-1.791.684-2.475 0s-.684-1.791 0-2.474c.684-.684 1.791-.684 2.475 0 .684.683.684 1.791 0 2.474zm1.866 13.827l-1.369 1.436-10.234-10.257v-7.743h2v6.891l9.603 9.673z"/></svg>&nbsp;';
                     foreach ($tagh as $val) {
                         $taghs = $taghs . '<a href=\'#tag/' . $val . '\' target=\'_self\' class=\'tag\'>' . $val . '</a>&nbsp;';
                     }
