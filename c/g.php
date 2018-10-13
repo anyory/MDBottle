@@ -333,7 +333,7 @@ if ($type == 'getpage') {
                     }
                 }
                 $c = file_get_contents('./../t/search.php');
-                $c = preg_replace("/\t|\搜索/", '搜索:' . $s, $c);
+                $c = preg_replace("/\t|\搜索/", $s . ' 的搜索结果:', $c);
                 if (empty($poststr)) {
                     $poststr = '<center><h3 style=\'color:#AAA;\'>箱子里空空如也...</h3></center>';
                 }
