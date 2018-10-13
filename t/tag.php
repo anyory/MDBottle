@@ -1,3 +1,6 @@
 <link href="./../css/mdui.css" rel="stylesheet">
-<div class='title'><h3 id='bq'>标签页</h3></div><div class='p'>[tags]</div>
-<script>document.title=$('#bq').html();</script>
+<title>标签页</title>
+<div class="mdui-typo">
+    <h1><strong>标签</strong></h1>
+    <div style="float: left;">[tags]</div>
+</div>
