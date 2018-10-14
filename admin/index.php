@@ -1,5 +1,4 @@
 <?php 
-require_once './../c/f.php';
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 session_start();
 function grc($length){
@@ -15,7 +14,7 @@ function grc($length){
 $salt=base64_encode(base64_encode(grc(64)).base64_encode(grc(64)).base64_encode(grc(64)).base64_encode(grc(64)).base64_encode(grc(64)));
 function fcrypt($s){
 	global $salt;
-	return sha1(crypt(sha1($s),$salt));
+	return sha1(crypt(sha1($s),sha1(base64_encode(md5(substr($s,0,6)))).$salt));
 }
 $request=@explode('?',$_SERVER['REQUEST_URI'])[1];
 if($_SESSION['log']!=='yes'){
@@ -24,11 +23,11 @@ if($request=='log'){
 		if(stripos($_POST['auth'],':')!==false){
 		file_put_contents('./passport.php','<?php $authid=\''.fcrypt($_POST['auth']).'\';$authsalt=\''.$salt.'\';?>');
 		}else{
-			echo "<script>alert('请按照格式填写哦');</script>";
+			echo "<script>alert('请按格式来哦');</script>";
 		}
 	}else{
 		require_once './passport.php';
-		if($authid==sha1(crypt(sha1($_POST['auth']),$authsalt))){
+		if($authid==sha1(crypt(sha1($_POST['auth']),sha1(base64_encode(md5(substr($_POST['auth'],0,6)))).$authsalt))){
 			$_SESSION['log']='yes';
 			header('Location: edit.php');
 		}else{
