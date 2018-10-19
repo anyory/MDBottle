@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once './../c/f.php';
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 session_start();
 function grc($length){
@@ -40,31 +41,6 @@ if($request=='log'){
 }
 session_write_close();
 ?>
-<style>
-body{
-font-family:'\5FAE\8F6F\96C5\9ED1';
-}
-input {
-	border: 1px solid #ccc;
-	padding: 7px 0px;
-	border-radius: 3px;
-	padding-left: 5px;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-}
-h2{
-	margin-top:30px;
-}
-input:focus {
-	border-color: #66afe9;
-	outline: 0;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-}
-</style>
 <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,7 +49,7 @@ input:focus {
 	  <link href="./../css/mdui.css" rel="stylesheet">
 	  <script src="./../js/mdui.min.js"></script>
 	  <title>MDBottle - 验证</title>
-	</head>
+</head>
 <body class="mdui-container" style="background-color: <?php echo admin_color()?>;">
 	<div class="mdui-shadow-2 mdui-hoverable mdui-text-center mdui-color-white mdui-typo mdui-center" style="margin-top: 15%; margin-left: 10%; margin-right: 10%;">
 		<div style="padding: 3%;">
