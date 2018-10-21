@@ -1,10 +1,11 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-date_default_timezone_set("Asifunction/Shanghai");
+date_default_timezone_set("Asia/Shanghai");
 header('Content-type:text/json;charset=utf-8');
 session_start();
 require_once './f.php';
 require_once './md.php';
+$md = new Parsedown();
 $type = $_GET['type'];
 $page = $_POST['p'];
 $chsload = $_POST['load'];
@@ -80,7 +81,7 @@ if ($type == 'getpage') {
                             $k = file_get_contents('./../t/posts.html');
                             require './../p/' . $val . '.php';
                             $k = preg_replace("/\t|\[index\]/", '<b>></b>', $k);
-                            $k = preg_replace("/\t|\[title\]/", $ptitle , $k);
+                            $k = preg_replace("/\t|\[title\]/", $ptitle, $k);
                             $k = preg_replace("/\t|\[date\]/", '<div class="mdui-color-blue mdui-img-rounded mdui-shadow-2" style="display: inline-block;"><span style="color: white;">&nbsp;&nbsp;置顶&nbsp;&nbsp;</span></div>', $k);
                             $k = preg_replace("/\t|\[link\]/", '#!' . $val, $k);
                             $poststr = $poststr . $k;
@@ -156,7 +157,7 @@ if ($type == 'getpage') {
                             $ia = file_get_contents('./../t/tags.html');
                             $ia = preg_replace("/\t|\[index\]/", $ids . '.', $ia);
                             $ia = preg_replace("/\t|\[tag\]/", $k, $ia);
-                            $ia = preg_replace("/\t|\[num\]/", $t . ' 篇文章', $ia);
+                            $ia = preg_replace("/\t|\[num\]/", $t . '&nbsp;篇文章', $ia);
                             $ia = preg_replace("/\t|\[link\]/", '#tag/' . $k, $ia);
                             $str = $str . $ia;
                             $ids+= 1;
@@ -232,7 +233,7 @@ if ($type == 'getpage') {
                     } else {
                         $c = preg_replace("/\t|\[editbar\]/", '', $c);
                     }
-                    $html = Markdown(htmlspecialchars_decode($pcontent));
+                    $html = $md->text((htmlspecialchars_decode(stripslashes($pcontent))));
                     $c = preg_replace("/\t|\[content\]/", $html, $c);
                     $tagh = explode(',', $tag);
                     $taghs = '<svg mdui-tooltip="{content: \'TAG\'}" style="padding-top: 5px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12.876 2h-8.876v9.015l10.972 11.124 9.028-9.028-11.124-11.111zm-3.139 5.737c-.684.684-1.791.684-2.475 0s-.684-1.791 0-2.474c.684-.684 1.791-.684 2.475 0 .684.683.684 1.791 0 2.474zm1.866 13.827l-1.369 1.436-10.234-10.257v-7.743h2v6.891l9.603 9.673z"/></svg>&nbsp;';
@@ -264,7 +265,7 @@ if ($type == 'getpage') {
                         } else {
                             $c = preg_replace("/\t|\[editbar\]/", '', $c);
                         }
-                        $html = Markdown(htmlspecialchars_decode($pcontent));
+                        $html = $md->text((htmlspecialchars_decode(stripslashes($pcontent))));
                         $c = preg_replace("/\t|\[content\]/", $html, $c);
                         $kb = explode('[!page]', $c);
                         if ($ptype == 'page') {
@@ -424,7 +425,7 @@ if ($type == 'getpage') {
     }
 } else {
     $result['result'] = 'notok';
-    $result['msg'] = '空请求哦QAQ';
+    $result['msg'] = '空请求QAQ';
 }
 session_write_close();
 $result['ca']=$mdback;
