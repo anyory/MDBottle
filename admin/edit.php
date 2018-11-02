@@ -88,13 +88,9 @@ session_write_close();
 	 	<link href="./../css/mdui.css" rel="stylesheet">
 	  	<script src="./../js/mdui.min.js"></script>
 	  	<script src="https://cdn.bootcss.com/pagedown/1.0/Markdown.Converter.min.js"></script>
-		<style>
-			.mdui-typo button {
-				font-family: Roboto, sans-serif;
-			}
-		</style>
 		<script src="./../js/jquery.min.js"></script>
 		<script src="./../js/file.js"></script>
+		<style>.mdui-typo button{font-family: Roboto, sans-serif;}</style>
 		<script>
 		$('input[id=smfile]').change(function() {
 			$('#lefile').val($(this).val());
@@ -108,8 +104,10 @@ session_write_close();
 </html>
 <script>var editnum<?php if(is_numeric($edit)){echo '='.$edit;}?>;</script>
 <body style="background-color: <?php echo admin_color();?>">
-	<button style="position: absolute; right: 20px;" mdui-tooltip="{content: '帮助'}" mdui-dialog="{target: '#help'}" onclick="javascript:document.body.style.overflow='auto'" class="mdui-btn mdui-btn-icon mdui-ripple"><span style="color: white"><i class="mdui-icon material-icons">help_outline</i></span></button>
-	<button style="position: absolute; left: 20px;" id="home" mdui-tooltip="{content: '返回主页'}" onclick="window.location.href='./../#m'" class="mdui-btn mdui-btn-icon mdui-ripple"><span style="color: white"><i class="mdui-icon material-icons">arrow_back</i></span></button>
+	<div style="margin-left: 1%; margin-right: 1%;">
+		<button style="float: right;" mdui-tooltip="{content: '帮助'}" mdui-dialog="{target: '#help'}" onclick="javascript:document.body.style.overflow='auto'" class="mdui-btn mdui-btn-icon mdui-ripple"><span style="color: white"><i class="mdui-icon material-icons">help_outline</i></span></button>
+		<button style="float: left;" id="home" mdui-tooltip="{content: '返回主页'}" onclick="window.location.href='./../#m'" class="mdui-btn mdui-btn-icon mdui-ripple"><span style="color: white"><i class="mdui-icon material-icons">arrow_back</i></span></button>
+	</div>
 	<div id="help" class="mdui-dialog mdui-typo">
 				<div class="mdui-dialog-title"><i class="mdui-icon material-icons">help_outline</i> 帮助</div>
 				<div class="mdui-dialog-content">
@@ -158,7 +156,7 @@ session_write_close();
 					<button class="mdui-btn mdui-ripple mdui-ripple-blue" mdui-dialog-confirm><span style="color: #2196F3">OK</button>
 				</div>
 			</div>
-	<div class="mdui-container mdui-typo mdui-shadow-2 mdui-hoverable mdui-color-white mdui-img-rounded" style="margin-top: 3%; margin-bottom: 3%;">
+	<div class="mdui-container mdui-typo mdui-shadow-2 mdui-hoverable mdui-color-white mdui-img-rounded" style="margin-top: 3%; margin-bottom: 3%; margin-left: 5%; margin-right: 5%;">
 		<div style="padding: 4%;">
 			<h2 style="display: inline;"><strong><?php if(!is_numeric($edit)){echo "撰写";} else {echo "编辑";};?></strong></h2>
 			<div style="float: right;">
@@ -180,7 +178,7 @@ session_write_close();
 					</div>
 					<div class="mdui-dialog-actions">
 						<button class="mdui-btn mdui-color-white mdui-ripple mdui-ripple-blue" mdui-dialog-close id="closedialog"><span style="color: #2196f3">CLOSE</span></button>
-						<button class="mdui-btn mdui-color-blue-accent mdui-ripple mdui-ripple-white mdui-hoverable mdui-shadow-2" onclick="javascript:var a = getTextResponse('./../' + document.getElementById('idvalue').value + '.php'); if (a == 'true'){window.location.href='./../' + document.getElementById('idvalue').value + '.php'} else { $('button[id=closedialog]').click(); mdui.alert('页面不存在。', '<i class=\'mdui-icon material-icons\'>warning</i> 警告')}">GO</button>
+						<button class="mdui-btn mdui-color-blue-accent mdui-ripple mdui-ripple-white mdui-hoverable mdui-shadow-2" onclick="javascript:var a = getTextResponse('./../p/' + document.getElementById('idvalue').value + '.php'); if (a == 'true'){window.location.href='edit.php?e=' + document.getElementById('idvalue').value} else { $('button[id=closedialog]').click(); mdui.alert('页面不存在。', '<i class=\'mdui-icon material-icons\'>warning</i> 警告')}">GO</button>
 					</div>
 				</div>
 				<button id="lefile" mdui-tooltip="{content: '上传图片'}" onclick="$('input[id=smfile]').click();" class="mdui-btn mdui-shadow-2 mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">image</i></button>&emsp;
