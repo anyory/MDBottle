@@ -1,3 +1,6 @@
+# 暂停更新
+由于内部原因，更新暂时暂停，但是不会弃坑，请放心。
+
 # Material Bottle 
 ![主页](https://i.loli.net/2018/10/21/5bcbe71f978b6.png)
 
